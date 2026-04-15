@@ -3,13 +3,200 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Convo Couch</title>
+    <title>CONVO — The Conversation Couch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=La+Belle+Aurore&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="main.css" />
   </head>
   <body>
-    <h1>Convo Couch Team</h1>
-    <p>Steven Dang</p>
-    <p>Xinyi Yao</p>
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="nav__inner">
+        <a class="nav__logo" href="index.html">
+          <img src="assets/logo.svg" alt="CONVO" />
+        </a>
+        <ul class="nav__links">
+          <li><a href="index.html" class="is-active">HOME</a></li>
+          <li><a href="product.html">PRODUCT</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+        </ul>
+        <a class="btn btn--pill nav__cta" href="contact.html">INQUIRE</a>
+      </div>
+    </nav>
+
+    <!-- HERO -->
+    <header class="hero">
+      <img class="hero__bg" src="assets/image9.png" alt="" />
+      <div class="hero__content">
+        <p class="hero__eyebrow">YOUR</p>
+        <h1 class="hero__title">CONVERSATION<br />COUCH</h1>
+        <a class="btn btn--dark" href="product.html">EXPLORE →</a>
+      </div>
+      <div class="hero__divider"></div>
+    </header>
+
+    <!-- INTRO -->
+    <section class="intro">
+      <div class="intro__mark">C</div>
+      <p class="intro__copy">
+        WELCOME TO CONVO — A SANCTUARY OF MODERN<br />
+        DESIGN. ELEGANCE MEETS COMFORT IN A<br />
+        RARE BLEND OF CRAFTSMANSHIP AND FORM,<br />
+        A PRODUCT BUILT TO THE HIGHEST<br />
+        STANDARDS OF LUXURY.
+      </p>
+      <div class="intro__tags">
+        <span class="pill">MODULAR</span>
+        <span class="pill">SECTIONAL</span>
+      </div>
+      <h2 class="intro__heading">THE CONVO</h2>
+      <p class="intro__sub">
+        One sofa, crafted to commission. Thousands of hours of attention to<br />
+        small details — choose your fabric, your configuration, your palette.
+      </p>
+    </section>
+
+    <!-- PRODUCT CAROUSEL -->
+    <section class="carousel">
+      <button class="carousel__arrow carousel__arrow--left" aria-label="Previous">←</button>
+      <div class="carousel__track">
+        <article class="card card--side">
+          <a href="product.html" class="card__link">
+            <div class="card__image card__image--tan">
+              <img src="assets/rectangle.png" alt="The Convo in Sand bouclé" />
+            </div>
+            <h3 class="card__title">THE CONVO</h3>
+            <p class="card__meta">Sand · Bouclé</p>
+            <p class="card__meta">From $33,490</p>
+          </a>
+          <div class="card__dots">
+            <span class="dot"></span><span class="dot dot--active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+        </article>
+
+        <article class="card card--main">
+          <a href="product.html" class="card__link">
+            <div class="card__image">
+              <img src="assets/image8.png" alt="The Convo in Deep Ocean velvet" />
+            </div>
+            <h3 class="card__title">THE CONVO</h3>
+            <p class="card__meta">Deep Ocean · Velvet</p>
+            <p class="card__meta">From $33,490</p>
+          </a>
+          <div class="card__dots">
+            <span class="dot dot--active"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+        </article>
+
+        <article class="card card--side">
+          <a href="product.html" class="card__link">
+            <div class="card__image card__image--tan">
+              <img src="assets/image8.png" alt="The Convo in Olive linen" />
+            </div>
+            <h3 class="card__title">THE CONVO</h3>
+            <p class="card__meta">Olive · Linen</p>
+            <p class="card__meta">From $33,490</p>
+          </a>
+          <div class="card__dots">
+            <span class="dot"></span><span class="dot"></span><span class="dot dot--active"></span><span class="dot"></span><span class="dot"></span>
+          </div>
+        </article>
+      </div>
+      <button class="carousel__arrow carousel__arrow--right" aria-label="Next">→</button>
+    </section>
+
+    <!-- MISSION -->
+    <section class="mission" id="mission">
+      <p class="mission__eyebrow">Our mission</p>
+      <div class="mission__rule"></div>
+      <div class="mission__grid">
+        <div class="mission__left">
+          <h2 class="mission__title">
+            CONVO blends<br />
+            modern elegance with<br />
+            timeless comfort
+          </h2>
+          <p class="mission__body">
+            Beyond exquisite design, our commitment extends to creating a
+            community that thrives on embrace and effortless lifestyle. With tailor-
+            made amenities, personalized services, and an atmosphere of
+            exclusivity.
+          </p>
+          <div class="mission__actions">
+            <a class="btn btn--pill" href="contact.html">GET IN TOUCH</a>
+            <a class="btn btn--pill btn--icon" href="contact.html">↗</a>
+          </div>
+        </div>
+        <div class="mission__right">
+          <p class="mission__quote">
+            OUR MISSION IS TO CREATE AN INCLUSIVE<br />
+            SANCTUARY WHERE DESIGN<br />
+            EXCELLENCE MEETS COMFORT, OFFERING<br />
+            METICULOUSLY CRAFTED SEATING<br />
+            DESIGNED FOR SOPHISTICATION,<br />
+            COMFORT, AND PRIVACY.
+          </p>
+          <p class="mission__quote mission__quote--small">
+            CONVO OFFERS EXCLUSIVE OPPORTUNITIES<br />
+            FOR THOSE WHO SEEK AN EXCEPTIONAL<br />
+            LIFESTYLE. FROM WORLD-CLASS COMFORT AND<br />
+            A VARIETY OF CONFIGURATIONS, EVERY DETAIL<br />
+            IS DESIGNED FOR COMFORT, LEISURE, AND<br />
+            SOPHISTICATION.
+          </p>
+        </div>
+      </div>
+
+      <!-- THUMB STRIP -->
+      <div class="thumbs">
+        <div class="thumb"><img src="assets/image1.png" alt="" /></div>
+        <div class="thumb"><img src="assets/image1.png" alt="" /></div>
+        <div class="thumb"><img src="assets/image1.png" alt="" /></div>
+        <div class="thumb"><img src="assets/image1.png" alt="" /></div>
+      </div>
+    </section>
+
+    <!-- UNIQUE EXPERIENCES -->
+    <section class="unique">
+      <h2 class="unique__title">
+        <span class="unique__line unique__line--1">UNIQUE</span>
+        <span class="unique__line unique__line--2">EXPERIENCES FOR</span>
+        <span class="unique__line unique__line--3">GATHERINGS</span>
+      </h2>
+      <p class="unique__eyebrow">CONVO in Context</p>
+      <div class="unique__grid">
+        <div class="tile tile--a"></div>
+        <div class="tile tile--b"></div>
+        <div class="tile tile--c"></div>
+        <div class="tile tile--d"></div>
+        <div class="tile tile--e"></div>
+        <div class="tile tile--f"></div>
+        <div class="tile tile--g"></div>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__col">
+        <p class="footer__brand">CONVO</p>
+        <p class="footer__tag">
+          The Conversation Couch.<br />Designed for connection.
+        </p>
+      </div>
+      <div class="footer__col footer__col--links">
+        <p><a href="index.html">HOME</a> &nbsp;&nbsp; <a href="product.html">PRODUCT</a> &nbsp;&nbsp; <a href="about.html">ABOUT</a></p>
+        <p>INSTAGRAM &nbsp;&nbsp; PINTEREST &nbsp;&nbsp; LINKEDIN</p>
+      </div>
+      <div class="footer__col footer__col--meta">
+        <p>© 2026 CONVO. All rights reserved.</p>
+        <p>ACAD-445 — Team Project</p>
+      </div>
+    </footer>
+
     <script src="main.js"></script>
   </body>
 </html>

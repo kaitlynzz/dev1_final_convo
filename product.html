@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>THE CONVO — Product</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=La+Belle+Aurore&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@3.5.0/dist/model-viewer.min.js"
+    ></script>
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav class="nav">
+      <div class="nav__inner">
+        <a class="nav__logo" href="index.html">
+          <img src="assets/logo.svg" alt="CONVO" />
+        </a>
+        <ul class="nav__links">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="product.html" class="is-active">PRODUCT</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+        </ul>
+        <a class="btn btn--pill nav__cta" href="contact.html">INQUIRE</a>
+      </div>
+    </nav>
+
+    <!-- BREADCRUMB -->
+    <div class="breadcrumb">
+      <a href="index.html">HOME</a> <span>/</span> <a href="product.html">PRODUCT</a>
+      <span>/</span> <span class="is-current">THE CONVO</span>
+    </div>
+
+    <!-- PRODUCT -->
+    <section class="product">
+      <div class="product__gallery">
+        <div class="product__main">
+          <img id="mainImage" src="assets/image8.png" alt="The Convo couch" />
+        </div>
+        <div class="product__thumbs">
+          <button class="pthumb is-active" data-src="assets/image8.png">
+            <img src="assets/image8.png" alt="" />
+          </button>
+          <button class="pthumb" data-src="assets/rectangle.png">
+            <img src="assets/rectangle.png" alt="" />
+          </button>
+          <button class="pthumb" data-src="assets/image9.png">
+            <img src="assets/image9.png" alt="" />
+          </button>
+          <button class="pthumb" data-src="assets/image1.png">
+            <img src="assets/image1.png" alt="" />
+          </button>
+        </div>
+      </div>
+
+      <aside class="product__info">
+        <p class="product__eyebrow">MODULAR / SECTIONAL</p>
+        <h1 class="product__title">THE CONVO</h1>
+        <p class="product__sub">Modular curved sofa</p>
+        <p class="product__price">From $33,490</p>
+
+        <div class="product__rule"></div>
+
+        <div class="product__field">
+          <p class="product__label">COLOR</p>
+          <div class="swatches">
+            <button class="swatch is-active" style="background:#2f5d7a" data-color="Deep Ocean" aria-label="Deep Ocean"></button>
+            <button class="swatch" style="background:#b8a98b" data-color="Sand" aria-label="Sand"></button>
+            <button class="swatch" style="background:#5a5a4a" data-color="Olive" aria-label="Olive"></button>
+            <button class="swatch" style="background:#2a2724" data-color="Onyx" aria-label="Onyx"></button>
+            <button class="swatch" style="background:#e8e2d5" data-color="Ivory" aria-label="Ivory"></button>
+          </div>
+          <p class="product__value" id="colorLabel">Deep Ocean</p>
+        </div>
+
+        <div class="product__field">
+          <p class="product__label">MODULES</p>
+          <p class="product__hint">
+            The Convo is built from one curved module that repeats. Choose how
+            many you'd like — the more you add, the deeper the arc.
+          </p>
+          <div class="configs configs--modules">
+            <button class="config-btn" data-modules="1">1 ×</button>
+            <button class="config-btn is-active" data-modules="2">2 ×</button>
+            <button class="config-btn" data-modules="3">3 ×</button>
+            <button class="config-btn" data-modules="4">4 ×</button>
+            <button class="config-btn" data-modules="custom">CUSTOM</button>
+          </div>
+          <div class="module-custom" id="moduleCustom" hidden>
+            <label for="moduleCount" class="product__label">HOW MANY?</label>
+            <input
+              id="moduleCount"
+              type="number"
+              min="5"
+              max="20"
+              value="5"
+              inputmode="numeric"
+            />
+            <p class="product__hint">
+              Anything beyond 4 modules is a bespoke build — we'll confirm lead
+              time and pricing when you inquire.
+            </p>
+          </div>
+          <div class="module-preview" id="modulePreview" aria-hidden="true">
+            <span class="module-unit"></span>
+            <span class="module-unit"></span>
+          </div>
+        </div>
+
+        <div class="product__field">
+          <p class="product__label">FABRIC</p>
+          <div class="configs">
+            <button class="config-btn is-active">BOUCLÉ</button>
+            <button class="config-btn">VELVET</button>
+            <button class="config-btn">LINEN</button>
+            <button class="config-btn">LEATHER</button>
+          </div>
+        </div>
+
+        <div class="product__cta">
+          <a class="btn btn--dark btn--wide" href="contact.html?subject=order">REQUEST TO ORDER →</a>
+          <a class="btn btn--pill btn--icon" href="#" id="favBtn" aria-label="Save">♡</a>
+        </div>
+
+        <p class="product__note">
+          Made to order · 10–14 weeks lead time · Worldwide white-glove delivery
+        </p>
+      </aside>
+    </section>
+
+    <!-- 3D VIEWER -->
+    <section class="viewer3d">
+      <div class="viewer3d__header">
+        <p class="details__eyebrow">Explore in 3D</p>
+        <h2 class="viewer3d__title">Spin it, walk around it</h2>
+        <p class="viewer3d__body">
+          Drag to rotate · scroll to zoom · tap <strong>AR</strong> on mobile
+          to place the Convo in your room.
+        </p>
+      </div>
+      <div class="viewer3d__stage-wrap">
+      <model-viewer
+        id="convoViewer"
+        class="viewer3d__stage"
+        src="assets/convo.glb"
+        alt="Interactive 3D model of The Convo sofa"
+        camera-controls
+        touch-action="pan-y"
+        auto-rotate
+        auto-rotate-delay="1500"
+        rotation-per-second="15deg"
+        shadow-intensity="1"
+        exposure="1"
+        ar
+        ar-modes="webxr scene-viewer quick-look"
+        environment-image="neutral"
+      >
+        <button slot="ar-button" class="btn btn--pill viewer3d__ar">
+          VIEW IN YOUR ROOM
+        </button>
+        <div slot="poster" class="viewer3d__poster">
+          <p>Loading the Convo…</p>
+        </div>
+      </model-viewer>
+
+      <!-- In-viewer controls: same options as the PDP, kept in sync. -->
+      <div class="viewer3d__controls">
+        <div class="viewer3d__control">
+          <p class="viewer3d__control-label">COLOR</p>
+          <div class="viewer3d__swatches" data-sync="color">
+            <button class="swatch-3d is-active" style="background:#2f5d7a" data-color="Deep Ocean" title="Deep Ocean"></button>
+            <button class="swatch-3d" style="background:#b8a98b" data-color="Sand" title="Sand"></button>
+            <button class="swatch-3d" style="background:#5a5a4a" data-color="Olive" title="Olive"></button>
+            <button class="swatch-3d" style="background:#2a2724" data-color="Onyx" title="Onyx"></button>
+            <button class="swatch-3d" style="background:#e8e2d5" data-color="Ivory" title="Ivory"></button>
+          </div>
+        </div>
+        <div class="viewer3d__control">
+          <p class="viewer3d__control-label">FABRIC</p>
+          <div class="viewer3d__fabrics" data-sync="fabric">
+            <button class="chip-3d is-active" data-fabric="BOUCLÉ">BOUCLÉ</button>
+            <button class="chip-3d" data-fabric="VELVET">VELVET</button>
+            <button class="chip-3d" data-fabric="LINEN">LINEN</button>
+            <button class="chip-3d" data-fabric="LEATHER">LEATHER</button>
+          </div>
+        </div>
+        <button class="chip-3d chip-3d--reset" id="viewerReset" title="Reset camera">⟳ RESET VIEW</button>
+      </div>
+      </div>
+    </section>
+
+    <!-- DETAILS -->
+    <section class="details">
+      <div class="details__header">
+        <p class="details__eyebrow">Details</p>
+        <div class="mission__rule"></div>
+      </div>
+
+      <div class="details__grid">
+        <div>
+          <h2 class="details__title">
+            A sofa designed<br />
+            around conversation
+          </h2>
+          <p class="details__body">
+            The Convo is a modular, curved sofa engineered to bring people
+            face-to-face. Its geometry — a shallow arc softened by deep seats —
+            naturally gathers guests, replacing the screen-facing line-up of the
+            typical living room with something more human.
+          </p>
+          <p class="details__body">
+            Hand-stitched in our Lisbon atelier on a hardwood frame with
+            eight-way hand-tied springs, every Convo is made to a single
+            commission.
+          </p>
+        </div>
+        <dl class="specs">
+          <div class="specs__row"><dt>Dimensions</dt><dd>W 340 × D 160 × H 72 cm</dd></div>
+          <div class="specs__row"><dt>Seat height</dt><dd>42 cm</dd></div>
+          <div class="specs__row"><dt>Frame</dt><dd>FSC-certified kiln-dried oak</dd></div>
+          <div class="specs__row"><dt>Suspension</dt><dd>Eight-way hand-tied springs</dd></div>
+          <div class="specs__row"><dt>Cushion fill</dt><dd>Goose down · high-resiliency foam core</dd></div>
+          <div class="specs__row"><dt>Upholstery</dt><dd>Made-to-order · 40+ fabrics</dd></div>
+          <div class="specs__row"><dt>Origin</dt><dd>Handcrafted in Portugal</dd></div>
+          <div class="specs__row"><dt>Warranty</dt><dd>Lifetime frame · 10-year upholstery</dd></div>
+        </dl>
+      </div>
+    </section>
+
+    <!-- FEATURES STRIP -->
+    <section class="features">
+      <div class="feature">
+        <p class="feature__num">01</p>
+        <h3 class="feature__title">Modular by design</h3>
+        <p class="feature__body">
+          Reconfigure at will. Sections lock and release with a single
+          brass-fitted lever — rearrange for a dinner, a film night, a crowd.
+        </p>
+      </div>
+      <div class="feature">
+        <p class="feature__num">02</p>
+        <h3 class="feature__title">Built to outlive trends</h3>
+        <p class="feature__body">
+          A hardwood frame, doweled and glued, carries a lifetime warranty.
+          Covers unzip for cleaning or re-upholstery decades from now.
+        </p>
+      </div>
+      <div class="feature">
+        <p class="feature__num">03</p>
+        <h3 class="feature__title">Made for you</h3>
+        <p class="feature__body">
+          Every Convo is commissioned: your fabric, your configuration, your
+          dimensions within a 40 cm range. No two are identical.
+        </p>
+      </div>
+    </section>
+
+    <!-- CLOSING CTA -->
+    <section class="closing">
+      <h2 class="closing__title">
+        Ready to<br />start the conversation?
+      </h2>
+      <div class="closing__actions">
+        <a class="btn btn--pill" href="contact.html">GET IN TOUCH</a>
+        <a class="btn btn--pill btn--icon" href="contact.html">↗</a>
+      </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+      <div class="footer__col">
+        <p class="footer__brand">CONVO</p>
+        <p class="footer__tag">
+          The Conversation Couch.<br />Designed for connection.
+        </p>
+      </div>
+      <div class="footer__col footer__col--links">
+        <p><a href="index.html">HOME</a> &nbsp;&nbsp; <a href="product.html">PRODUCT</a> &nbsp;&nbsp; <a href="about.html">ABOUT</a></p>
+        <p>INSTAGRAM &nbsp;&nbsp; PINTEREST &nbsp;&nbsp; LINKEDIN</p>
+      </div>
+      <div class="footer__col footer__col--meta">
+        <p>© 2026 CONVO. All rights reserved.</p>
+        <p>ACAD-445 — Team Project</p>
+      </div>
+    </footer>
+
+    <script src="main.js"></script>
+    <script src="product.js"></script>
+  </body>
+</html>

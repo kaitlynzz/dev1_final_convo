@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>CONVO — Get in touch</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=La+Belle+Aurore&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="main.css" />
+  </head>
+  <body>
+    <nav class="nav">
+      <div class="nav__inner">
+        <a class="nav__logo" href="index.html">
+          <img src="assets/logo.svg" alt="CONVO" />
+        </a>
+        <ul class="nav__links">
+          <li><a href="index.html">HOME</a></li>
+          <li><a href="product.html">PRODUCT</a></li>
+          <li><a href="about.html">ABOUT</a></li>
+        </ul>
+        <a class="btn btn--pill nav__cta is-active" href="contact.html">INQUIRE</a>
+      </div>
+    </nav>
+
+    <section class="contact">
+      <div class="contact__left">
+        <p class="hero__eyebrow">let's</p>
+        <h1 class="contact__title">
+          START THE<br />CONVERSATION
+        </h1>
+        <p class="contact__body">
+          Tell us about the room, the gathering, the conversation you want to
+          host. A member of our atelier will reply within two business days.
+        </p>
+        <ul class="contact__meta">
+          <li><span>Email</span><a href="mailto:hello@convo.studio">hello@convo.studio</a></li>
+          <li><span>Studio</span><a href="#">Rua da Boavista 41, Lisbon</a></li>
+          <li><span>Phone</span><a href="tel:+351000000000">+351 000 000 000</a></li>
+        </ul>
+      </div>
+
+      <form class="contact__form" id="contactForm" novalidate>
+        <div class="field">
+          <label for="name">NAME</label>
+          <input id="name" name="name" type="text" required />
+        </div>
+        <div class="field">
+          <label for="email">EMAIL</label>
+          <input id="email" name="email" type="email" required />
+        </div>
+        <div class="field">
+          <label for="subject">I'M INTERESTED IN</label>
+          <select id="subject" name="subject">
+            <option value="general">General inquiry</option>
+            <option value="order">Ordering The Convo</option>
+            <option value="trade">Trade / design partnership</option>
+            <option value="press">Press</option>
+          </select>
+        </div>
+        <div class="field">
+          <label for="message">MESSAGE</label>
+          <textarea id="message" name="message" rows="5" required></textarea>
+        </div>
+        <button type="submit" class="btn btn--dark btn--wide">SEND →</button>
+        <p class="form__status" id="formStatus" hidden></p>
+      </form>
+    </section>
+
+    <footer class="footer">
+      <div class="footer__col">
+        <p class="footer__brand">CONVO</p>
+        <p class="footer__tag">
+          The Conversation Couch.<br />Designed for connection.
+        </p>
+      </div>
+      <div class="footer__col footer__col--links">
+        <p><a href="index.html">HOME</a> &nbsp;&nbsp; <a href="product.html">PRODUCT</a> &nbsp;&nbsp; <a href="about.html">ABOUT</a></p>
+        <p>INSTAGRAM &nbsp;&nbsp; PINTEREST &nbsp;&nbsp; LINKEDIN</p>
+      </div>
+      <div class="footer__col footer__col--meta">
+        <p>© 2026 CONVO. All rights reserved.</p>
+        <p>ACAD-445 — Team Project</p>
+      </div>
+    </footer>
+
+    <script src="contact.js"></script>
+  </body>
+</html>
