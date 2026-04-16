@@ -130,6 +130,7 @@ img {
   object-fit: cover;
   object-position: center 60%;
   z-index: 0;
+  pointer-events: none;
 }
 .hero__content {
   position: relative;
@@ -987,6 +988,102 @@ img {
   font-size: 12px;
   color: var(--muted);
   line-height: 1.8;
+}
+
+/* =============== COMPETITIVE MATRIX =============== */
+.matrix {
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 80px 80px 40px;
+}
+.matrix__header {
+  margin-bottom: 40px;
+}
+.matrix__title {
+  font-size: 36px;
+  font-weight: 300;
+  color: var(--ink);
+  line-height: 1.15;
+  margin-top: 8px;
+}
+.matrix__scroll {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+.matrix__table {
+  width: 100%;
+  min-width: 780px;
+  border-collapse: collapse;
+  font-size: 12px;
+}
+.matrix__table th,
+.matrix__table td {
+  padding: 14px 16px;
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  vertical-align: middle;
+}
+.matrix__table th {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.08em;
+  color: var(--muted);
+  padding-bottom: 18px;
+  white-space: nowrap;
+}
+.matrix__feature-col {
+  width: 240px;
+}
+.matrix__feature {
+  text-align: left !important;
+  font-weight: 500;
+  color: var(--ink);
+  white-space: nowrap;
+}
+.matrix__highlight {
+  background: var(--ink-dark) !important;
+  color: var(--bg) !important;
+}
+thead .matrix__highlight {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  border-radius: 8px 8px 0 0;
+}
+tbody tr:last-child .matrix__highlight {
+  border-radius: 0 0 8px 8px;
+}
+.matrix__check {
+  color: #3b8a58;
+  font-weight: 700;
+  font-size: 14px;
+}
+.matrix__highlight .matrix__check {
+  color: #7ddfaa;
+}
+.matrix__x {
+  color: #c7c2ba;
+  font-size: 14px;
+}
+.matrix__half {
+  font-size: 10px;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  text-transform: uppercase;
+}
+.matrix__highlight .matrix__half {
+  color: rgba(249, 247, 244, 0.6);
+}
+.matrix__note {
+  margin-top: 16px;
+  font-size: 10px;
+  color: var(--muted);
+  letter-spacing: 0.04em;
+}
+
+@media (max-width: 1100px) {
+  .matrix { padding: 40px 24px; }
+  .matrix__title { font-size: 28px; }
 }
 
 /* =============== CLOSING CTA =============== */
