@@ -132,6 +132,20 @@ img {
   z-index: 0;
   pointer-events: none;
 }
+/* Subtle full-bleed scrim in case any frame of the video gets too bright
+   near the headline. Kept light so the video is still the main event. */
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: linear-gradient(
+    90deg,
+    rgba(249, 247, 244, 0.35) 0%,
+    rgba(249, 247, 244, 0) 55%
+  );
+  pointer-events: none;
+}
 .hero__content {
   position: relative;
   z-index: 1;
@@ -153,6 +167,42 @@ img {
   color: var(--ink-dark);
   letter-spacing: -0.01em;
   margin-bottom: 30px;
+  cursor: default;
+}
+/* Each line sits in its own box so a dark fill can sweep behind it.
+   On hover the fill slides in from the left and the text flips to white. */
+.hero__title span {
+  display: inline-block;
+  position: relative;
+  padding: 6px 18px;
+  margin: 0 -18px;
+  color: var(--ink-dark);
+  transition: color 0.45s cubic-bezier(0.2, 0.8, 0.2, 1);
+  isolation: isolate;
+}
+.hero__title span::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: var(--ink-dark);
+  border-radius: 6px;
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.65s cubic-bezier(0.77, 0, 0.18, 1);
+  z-index: -1;
+}
+.hero__title:hover span {
+  color: var(--bg);
+}
+.hero__title:hover span::before {
+  transform: scaleX(1);
+}
+/* Stagger the second line so the fill cascades downward. */
+.hero__title:hover span:nth-of-type(2) {
+  transition-delay: 0.12s;
+}
+.hero__title:hover span:nth-of-type(2)::before {
+  transition-delay: 0.12s;
 }
 
 /* =============== INTRO =============== */
@@ -207,7 +257,7 @@ img {
   margin-bottom: 14px;
 }
 .intro__sub {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -381,7 +431,7 @@ img {
   letter-spacing: 0.02em;
 }
 .mission__quote--small {
-  font-size: 11px;
+  font-size: 12px;
 }
 
 /* =============== THUMBS =============== */
@@ -442,6 +492,13 @@ img {
 .tile {
   background: var(--grey);
   border-radius: 10px;
+  overflow: hidden;
+}
+.tile img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
 }
 .tile--a {
   grid-column: 1 / span 4;
@@ -677,7 +734,7 @@ img {
 }
 
 .product__hint {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.7;
   margin-bottom: 14px;
@@ -752,7 +809,7 @@ img {
   font-size: 12px;
 }
 .product__note {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -985,7 +1042,7 @@ img {
   margin-bottom: 12px;
 }
 .feature__body {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -1171,7 +1228,7 @@ tbody tr:last-child .matrix__highlight {
   margin-bottom: 12px;
 }
 .pillar__body {
-  font-size: 12px;
+  font-size: 13px;
   color: var(--muted);
   line-height: 1.8;
 }
@@ -1260,7 +1317,7 @@ tbody tr:last-child .matrix__highlight {
   margin-bottom: 10px;
 }
 .member__bio {
-  font-size: 11px;
+  font-size: 12px;
   color: var(--muted);
   line-height: 1.7;
 }
@@ -1345,8 +1402,37 @@ tbody tr:last-child .matrix__highlight {
   outline: none;
   resize: none;
 }
+/* Custom select: strip native chrome, add our own caret. */
+.field select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  padding: 10px 32px 10px 14px;
+  border: 1px solid var(--line);
+  border-radius: 999px;
+  background-color: var(--bg);
+  background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8' fill='none'><path d='M1 1L6 6L11 1' stroke='%235e5642' stroke-width='1.5' stroke-linecap='round' stroke-linejoin='round'/></svg>");
+  background-repeat: no-repeat;
+  background-position: right 14px center;
+  background-size: 12px 8px;
+  cursor: pointer;
+  letter-spacing: 0.02em;
+  transition: border-color 0.15s, background-color 0.15s;
+}
+.field select:hover {
+  border-color: var(--muted);
+}
+.field select:focus {
+  border-color: var(--ink-dark);
+  background-color: #fff;
+}
+.field select option {
+  font-family: inherit;
+  font-size: 13px;
+  color: var(--ink);
+  background: #fff;
+}
 .field input:focus,
-.field select:focus,
 .field textarea:focus {
   border-bottom-color: var(--ink-dark);
 }
