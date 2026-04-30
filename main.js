@@ -11,7 +11,24 @@
     cards.forEach((c, i) => {
       c.classList.add(i === 1 ? "card--main" : "card--side");
     });
+    updateLinks();
   }
+
+  function updateLinks() {
+    const cards = Array.from(track.children);
+    cards.forEach((card) => {
+      const img = card.querySelector('img');
+      const link = card.querySelector('.card__link');
+      if (img && link) {
+        const src = img.getAttribute('src');
+        const filename = src.split('/').pop();
+        link.href = `product.html?image=${filename}`;
+      }
+    });
+  }
+
+  // Initial setup
+  applyLayout();
 
   right.addEventListener("click", () => {
     track.appendChild(track.firstElementChild);

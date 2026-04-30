@@ -1,3 +1,21 @@
+// Check URL parameters for initial image selection
+const urlParams = new URLSearchParams(window.location.search);
+const initialImage = urlParams.get('image');
+if (initialImage) {
+  const mainImage = document.getElementById("mainImage");
+  if (mainImage) {
+    mainImage.src = `assets/${initialImage}`;
+  }
+  // Activate the corresponding thumbnail
+  const thumbs = document.querySelectorAll(".pthumb");
+  thumbs.forEach((thumb) => {
+    thumb.classList.remove("is-active");
+    if (thumb.dataset.src === `assets/${initialImage}`) {
+      thumb.classList.add("is-active");
+    }
+  });
+}
+
 // Gallery thumb switching
 document.querySelectorAll(".pthumb").forEach((btn) => {
   btn.addEventListener("click", () => {
@@ -7,12 +25,36 @@ document.querySelectorAll(".pthumb").forEach((btn) => {
   });
 });
 
+// Color to image mapping
+const colorImageMap = {
+  "Deep Ocean": "assets/image1.png",
+  "Sand": "assets/rectangle.png",
+  "Ivory": "assets/image9.png",
+  "Olive": "assets/image8.png",
+  "Onyx": "assets/image8.png" // Default to image8 if not specified
+};
+
 // Color swatches
 document.querySelectorAll(".swatch").forEach((s) => {
   s.addEventListener("click", () => {
     document.querySelectorAll(".swatch").forEach((x) => x.classList.remove("is-active"));
     s.classList.add("is-active");
-    document.getElementById("colorLabel").textContent = s.dataset.color;
+    const selectedColor = s.dataset.color;
+    document.getElementById("colorLabel").textContent = selectedColor;
+
+    // Update main image
+    const mainImage = document.getElementById("mainImage");
+    if (mainImage && colorImageMap[selectedColor]) {
+      mainImage.src = colorImageMap[selectedColor];
+    }
+
+    // Update active thumbnail
+    document.querySelectorAll(".pthumb").forEach((thumb) => {
+      thumb.classList.remove("is-active");
+      if (thumb.dataset.src === colorImageMap[selectedColor]) {
+        thumb.classList.add("is-active");
+      }
+    });
   });
 });
 
@@ -29,21 +71,35 @@ document.querySelectorAll(".configs").forEach((group) => {
       const custom = document.getElementById("moduleCustom");
       if (val === "custom") {
         custom.hidden = false;
-        renderModules(Number(document.getElementById("moduleCount").value) || 5);
+        const customCount = Number(document.getElementById("moduleCount").value) || 5;
+        renderModules(customCount);
+        setModulePrice(customCount);
       } else {
         custom.hidden = true;
-        renderModules(Number(val) || 1);
+        const moduleCount = Number(val) || 1;
+        renderModules(moduleCount);
+        setModulePrice(moduleCount);
       }
     }
   });
 });
+
+const moduleCost = 5000;
 
 const customInput = document.getElementById("moduleCount");
 if (customInput) {
   customInput.addEventListener("input", () => {
     const n = Math.max(1, Math.min(20, Number(customInput.value) || 1));
     renderModules(n);
+    setModulePrice(n);
   });
+}
+
+function setModulePrice(count) {
+  const priceEl = document.querySelector(".product__price");
+  if (!priceEl) return;
+  const total = Math.max(1, Number(count)) * moduleCost;
+  priceEl.textContent = `From $${total.toLocaleString()}`;
 }
 
 function renderModules(count) {
@@ -56,6 +112,8 @@ function renderModules(count) {
     preview.appendChild(unit);
   }
 }
+
+setModulePrice(2);
 
 // ============================================================
 // 3D MATERIAL SWITCHING
