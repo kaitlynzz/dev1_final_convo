@@ -16,12 +16,18 @@ if (initialImage) {
   });
 }
 
-// Gallery thumb switching
+// Gallery thumb switching — also drives the active color so swatches,
+// 3D viewer, and main image stay in sync.
 document.querySelectorAll(".pthumb").forEach((btn) => {
   btn.addEventListener("click", () => {
-    document.querySelectorAll(".pthumb").forEach((b) => b.classList.remove("is-active"));
-    btn.classList.add("is-active");
-    document.getElementById("mainImage").src = btn.dataset.src;
+    const color = btn.dataset.color;
+    if (color && typeof setColor === "function") {
+      setColor(color);
+    } else {
+      document.querySelectorAll(".pthumb").forEach((b) => b.classList.remove("is-active"));
+      btn.classList.add("is-active");
+      document.getElementById("mainImage").src = btn.dataset.src;
+    }
   });
 });
 
@@ -65,55 +71,8 @@ document.querySelectorAll(".configs").forEach((group) => {
     if (!btn) return;
     group.querySelectorAll(".config-btn").forEach((b) => b.classList.remove("is-active"));
     btn.classList.add("is-active");
-
-    if (group.classList.contains("configs--modules")) {
-      const val = btn.dataset.modules;
-      const custom = document.getElementById("moduleCustom");
-      if (val === "custom") {
-        custom.hidden = false;
-        const customCount = Number(document.getElementById("moduleCount").value) || 5;
-        renderModules(customCount);
-        setModulePrice(customCount);
-      } else {
-        custom.hidden = true;
-        const moduleCount = Number(val) || 1;
-        renderModules(moduleCount);
-        setModulePrice(moduleCount);
-      }
-    }
   });
 });
-
-const moduleCost = 5000;
-
-const customInput = document.getElementById("moduleCount");
-if (customInput) {
-  customInput.addEventListener("input", () => {
-    const n = Math.max(1, Math.min(20, Number(customInput.value) || 1));
-    renderModules(n);
-    setModulePrice(n);
-  });
-}
-
-function setModulePrice(count) {
-  const priceEl = document.querySelector(".product__price");
-  if (!priceEl) return;
-  const total = Math.max(1, Number(count)) * moduleCost;
-  priceEl.textContent = `From $${total.toLocaleString()}`;
-}
-
-function renderModules(count) {
-  const preview = document.getElementById("modulePreview");
-  if (!preview) return;
-  preview.innerHTML = "";
-  for (let i = 0; i < count; i++) {
-    const unit = document.createElement("span");
-    unit.className = "module-unit";
-    preview.appendChild(unit);
-  }
-}
-
-setModulePrice(2);
 
 // ============================================================
 // 3D MATERIAL SWITCHING
@@ -126,10 +85,19 @@ const convoViewer = document.getElementById("convoViewer");
 // Colors advertised in the product info panel.
 const COLOR_HEX = {
   "Deep Ocean": "#2f5d7a",
-  Sand: "#b8a98b",
   Olive: "#5a5a4a",
-  Onyx: "#2a2724",
   Ivory: "#e8e2d5",
+  Magenta: "#7a2a44",
+  Yellow: "#d4a64a",
+};
+
+// Hero gallery image for each color variant.
+const COLOR_IMAGE = {
+  "Deep Ocean": "assets/ocean.webp",
+  Olive: "assets/olive.webp",
+  Ivory: "assets/ivory.webp",
+  Magenta: "assets/magenta.webp",
+  Yellow: "assets/yellow.jpg.avif",
 };
 
 // Fabric PBR presets — metalness stays ~0 (all fabrics / leather),
@@ -139,6 +107,14 @@ const FABRIC_PBR = {
   VELVET: { metal: 0.0, rough: 0.55 }, // soft directional sheen
   LINEN: { metal: 0.0, rough: 0.9 }, // natural, matte weave
   LEATHER: { metal: 0.06, rough: 0.45 }, // subtle sheen
+};
+
+// Price per fabric. Bouclé is the base; the rest scale up or down.
+const FABRIC_PRICE = {
+  BOUCLÉ: 29999,
+  VELVET: 32499,
+  LINEN: 27999,
+  LEATHER: 36999,
 };
 
 // Track current selection (matches the initial `is-active` HTML state).
@@ -187,8 +163,17 @@ function syncColorUI(name) {
   document.querySelectorAll(".swatch-3d").forEach((s) =>
     s.classList.toggle("is-active", s.dataset.color === name)
   );
+  document.querySelectorAll(".pthumb").forEach((t) =>
+    t.classList.toggle("is-active", t.dataset.color === name)
+  );
   const label = document.getElementById("colorLabel");
   if (label) label.textContent = name;
+  const mainImg = document.getElementById("mainImage");
+  const src = COLOR_IMAGE[name];
+  if (mainImg && src) {
+    mainImg.src = src;
+    mainImg.alt = `The Convo in ${name}`;
+  }
 }
 
 function syncFabricUI(fabric) {
@@ -214,6 +199,15 @@ function setFabric(fabric) {
   currentFabric = fabric;
   syncFabricUI(fabric);
   applyConvoMaterials();
+  updatePrice();
+}
+
+function updatePrice() {
+  const el = document.getElementById("productPrice");
+  if (!el) return;
+  const price = FABRIC_PRICE[currentFabric];
+  if (price == null) return;
+  el.textContent = `From $${price.toLocaleString("en-US")}`;
 }
 
 if (convoViewer) {
@@ -265,3 +259,21 @@ if (fav) {
     fav.textContent = fav.classList.contains("is-faved") ? "♥" : "♡";
   });
 }
+
+// ============================================================
+// PURCHASE MODE: Complete couch vs. Build-your-own components
+// ============================================================
+document.querySelectorAll(".mode-toggle__btn").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    const mode = btn.dataset.mode;
+    document.querySelectorAll(".mode-toggle__btn").forEach((b) => {
+      const active = b.dataset.mode === mode;
+      b.classList.toggle("is-active", active);
+      b.setAttribute("aria-selected", active);
+    });
+    document.querySelectorAll(".mode-panel").forEach((p) => {
+      p.hidden = p.dataset.panel !== mode;
+    });
+  });
+});
+

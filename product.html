@@ -43,20 +43,23 @@
     <section class="product">
       <div class="product__gallery">
         <div class="product__main">
-          <img id="mainImage" src="assets/image8.png" alt="The Convo couch" />
+          <img id="mainImage" src="assets/ocean.webp" alt="The Convo in Deep Ocean" />
         </div>
         <div class="product__thumbs">
-          <button class="pthumb is-active" data-src="assets/image8.png">
-            <img src="assets/image8.png" alt="" />
+          <button class="pthumb is-active" data-src="assets/ocean.webp" data-color="Deep Ocean">
+            <img src="assets/ocean.webp" alt="Deep Ocean" />
           </button>
-          <button class="pthumb" data-src="assets/rectangle.png">
-            <img src="assets/rectangle.png" alt="" />
+          <button class="pthumb" data-src="assets/olive.webp" data-color="Olive">
+            <img src="assets/olive.webp" alt="Olive" />
           </button>
-          <button class="pthumb" data-src="assets/image9.png">
-            <img src="assets/image9.png" alt="" />
+          <button class="pthumb" data-src="assets/ivory.webp" data-color="Ivory">
+            <img src="assets/ivory.webp" alt="Ivory" />
           </button>
-          <button class="pthumb" data-src="assets/image1.png">
-            <img src="assets/image1.png" alt="" />
+          <button class="pthumb" data-src="assets/magenta.webp" data-color="Magenta">
+            <img src="assets/magenta.webp" alt="Magenta" />
+          </button>
+          <button class="pthumb" data-src="assets/yellow.jpg.avif" data-color="Yellow">
+            <img src="assets/yellow.jpg.avif" alt="Yellow" />
           </button>
         </div>
       </div>
@@ -65,53 +68,42 @@
         <p class="product__eyebrow">MODULAR / SECTIONAL</p>
         <h1 class="product__title">THE CONVO</h1>
         <p class="product__sub">Modular curved sofa</p>
-        <p class="product__price">From $5,000</p>
+        <p class="product__price" id="productPrice">From $29,999</p>
 
         <div class="product__rule"></div>
 
+        <!-- Purchase mode toggle: full couch vs build-your-own components -->
+        <div class="mode-toggle" role="tablist" aria-label="Purchase mode">
+          <button
+            class="mode-toggle__btn is-active"
+            data-mode="complete"
+            role="tab"
+            aria-selected="true"
+          >
+            COMPLETE COUCH
+          </button>
+          <button
+            class="mode-toggle__btn"
+            data-mode="build"
+            role="tab"
+            aria-selected="false"
+          >
+            BUILD YOUR OWN
+          </button>
+        </div>
+
+        <!-- ============== COMPLETE MODE ============== -->
+        <div class="mode-panel" data-panel="complete">
         <div class="product__field">
           <p class="product__label">COLOR</p>
           <div class="swatches">
             <button class="swatch is-active" style="background:#2f5d7a" data-color="Deep Ocean" aria-label="Deep Ocean"></button>
-            <button class="swatch" style="background:#b8a98b" data-color="Sand" aria-label="Sand"></button>
             <button class="swatch" style="background:#5a5a4a" data-color="Olive" aria-label="Olive"></button>
             <button class="swatch" style="background:#e8e2d5" data-color="Ivory" aria-label="Ivory"></button>
+            <button class="swatch" style="background:#7a2a44" data-color="Magenta" aria-label="Magenta"></button>
+            <button class="swatch" style="background:#d4a64a" data-color="Yellow" aria-label="Yellow"></button>
           </div>
           <p class="product__value" id="colorLabel">Deep Ocean</p>
-        </div>
-
-        <div class="product__field">
-          <p class="product__label">MODULES</p>
-          <p class="product__hint">
-            The Convo is built from one curved module that repeats. Choose how
-            many you'd like — the more you add, the deeper the arc.
-          </p>
-          <div class="configs configs--modules">
-            <button class="config-btn" data-modules="1">1 ×</button>
-            <button class="config-btn is-active" data-modules="2">2 ×</button>
-            <button class="config-btn" data-modules="3">3 ×</button>
-            <button class="config-btn" data-modules="4">4 ×</button>
-            <button class="config-btn" data-modules="custom">CUSTOM</button>
-          </div>
-          <div class="module-custom" id="moduleCustom" hidden>
-            <label for="moduleCount" class="product__label">HOW MANY?</label>
-            <input
-              id="moduleCount"
-              type="number"
-              min="5"
-              max="20"
-              value="5"
-              inputmode="numeric"
-            />
-            <p class="product__hint">
-              Anything beyond 4 modules is a bespoke build — we'll confirm lead
-              time and pricing when you inquire.
-            </p>
-          </div>
-          <div class="module-preview" id="modulePreview" aria-hidden="true">
-            <span class="module-unit"></span>
-            <span class="module-unit"></span>
-          </div>
         </div>
 
         <div class="product__field">
@@ -129,9 +121,65 @@
           <button class="btn btn--pill btn--icon" id="favBtn" type="button" aria-label="Save">♡</button>
         </div>
 
+        <p class="product__limit">Limited to one purchase per person.</p>
         <p class="product__note">
           Made to order · 10–14 weeks lead time · Worldwide white-glove delivery
         </p>
+        </div>
+        <!-- ============== /COMPLETE MODE ============== -->
+
+        <!-- ============== BUILD-YOUR-OWN MODE ============== -->
+        <div class="mode-panel" data-panel="build" hidden>
+          <p class="inquiry__lede">
+            Tell us about the room and we'll design a one-of-a-kind Convo
+            around it. Every custom build starts with a conversation — no
+            two are alike.
+          </p>
+
+          <ul class="inquiry__list">
+            <li>
+              <span class="inquiry__dot"></span>
+              <div>
+                <h3 class="inquiry__item-title">Custom dimensions</h3>
+                <p class="inquiry__item-body">Built to your space, down to the centimeter.</p>
+              </div>
+            </li>
+            <li>
+              <span class="inquiry__dot"></span>
+              <div>
+                <h3 class="inquiry__item-title">Bespoke configurations</h3>
+                <p class="inquiry__item-body">Curved, sectional, or freeform — designed with our atelier.</p>
+              </div>
+            </li>
+            <li>
+              <span class="inquiry__dot"></span>
+              <div>
+                <h3 class="inquiry__item-title">Mixed fabrics &amp; colors</h3>
+                <p class="inquiry__item-body">Combine palettes and finishes across a single piece.</p>
+              </div>
+            </li>
+            <li>
+              <span class="inquiry__dot"></span>
+              <div>
+                <h3 class="inquiry__item-title">Personalized consultation</h3>
+                <p class="inquiry__item-body">A designer walks you through every decision.</p>
+              </div>
+            </li>
+          </ul>
+
+          <div class="product__cta">
+            <a
+              class="btn btn--dark btn--wide"
+              href="contact.html?subject=custom-build"
+            >START INQUIRY →</a>
+            <button class="btn btn--pill btn--icon" type="button" aria-label="Save">♡</button>
+          </div>
+
+          <p class="product__note">
+            By appointment · Quote confirmed after consultation · 8–12 week lead time
+          </p>
+        </div>
+        <!-- ============== /BUILD-YOUR-OWN MODE ============== -->
       </aside>
     </section>
 
@@ -176,9 +224,10 @@
           <p class="viewer3d__control-label">COLOR</p>
           <div class="viewer3d__swatches" data-sync="color">
             <button class="swatch-3d is-active" style="background:#2f5d7a" data-color="Deep Ocean" title="Deep Ocean"></button>
-            <button class="swatch-3d" style="background:#b8a98b" data-color="Sand" title="Sand"></button>
             <button class="swatch-3d" style="background:#5a5a4a" data-color="Olive" title="Olive"></button>
             <button class="swatch-3d" style="background:#e8e2d5" data-color="Ivory" title="Ivory"></button>
+            <button class="swatch-3d" style="background:#7a2a44" data-color="Magenta" title="Magenta"></button>
+            <button class="swatch-3d" style="background:#d4a64a" data-color="Yellow" title="Yellow"></button>
           </div>
         </div>
         <div class="viewer3d__control">

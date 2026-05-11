@@ -470,6 +470,140 @@ footer {
 </head>
 <body>
 
+<!-- PASSWORD GATE -->
+<div id="convoGate" class="gate" hidden>
+  <div class="gate__card">
+    <p class="gate__eyebrow">CONFIDENTIAL</p>
+    <h1 class="gate__title">Investor access</h1>
+    <p class="gate__body">
+      This page is shared by appointment. Enter the password
+      provided by the CONVO team to continue.
+    </p>
+    <form id="gateForm" class="gate__form" autocomplete="off">
+      <label for="gatePw" class="gate__label">PASSWORD</label>
+      <input id="gatePw" type="password" required autofocus />
+      <button type="submit" class="btn btn--dark gate__submit">ENTER →</button>
+      <p id="gateError" class="gate__error" hidden>That's not the right password.</p>
+    </form>
+    <p class="gate__back"><a href="index.html">← Back to home</a></p>
+  </div>
+</div>
+
+<style>
+.gate {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: var(--bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px;
+}
+.gate__card {
+  width: 100%;
+  max-width: 440px;
+  background: #fff;
+  padding: 48px 40px;
+  border-radius: 14px;
+  box-shadow: 0 10px 50px rgba(0, 0, 0, 0.08);
+}
+.gate__eyebrow {
+  font-size: 10px;
+  letter-spacing: 0.16em;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+.gate__title {
+  font-family: "Inter", sans-serif;
+  font-size: 32px;
+  font-weight: 300;
+  color: var(--ink-dark);
+  line-height: 1.1;
+  margin-bottom: 16px;
+}
+.gate__body {
+  font-size: 13px;
+  color: var(--muted);
+  line-height: 1.7;
+  margin-bottom: 28px;
+}
+.gate__form { display: flex; flex-direction: column; gap: 8px; }
+.gate__label {
+  font-size: 10px;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+}
+#gatePw {
+  font-family: inherit;
+  font-size: 14px;
+  color: var(--ink);
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--line);
+  padding: 10px 0;
+  outline: none;
+  margin-bottom: 18px;
+}
+#gatePw:focus { border-bottom-color: var(--ink-dark); }
+.gate__submit { align-self: flex-start; min-width: 140px; }
+.gate__error {
+  margin-top: 10px;
+  font-size: 12px;
+  color: #9b3a3a;
+}
+.gate__back {
+  margin-top: 28px;
+  font-size: 11px;
+  letter-spacing: 0.06em;
+}
+.gate__back a { color: var(--muted); }
+.gate__back a:hover { color: var(--ink); }
+.gate-locked { overflow: hidden; }
+.gate-locked .convo-gated-content { display: none !important; }
+</style>
+
+<script>
+(function () {
+  const PASSWORD = "convo2026"; // change me — also no real security
+  const KEY = "convoInvestorUnlocked";
+  const gate = document.getElementById("convoGate");
+  const form = document.getElementById("gateForm");
+  const input = document.getElementById("gatePw");
+  const errorEl = document.getElementById("gateError");
+
+  function unlock() {
+    sessionStorage.setItem(KEY, "1");
+    document.documentElement.classList.remove("gate-locked");
+    gate.hidden = true;
+  }
+  function lock() {
+    document.documentElement.classList.add("gate-locked");
+    gate.hidden = false;
+    setTimeout(() => input && input.focus(), 50);
+  }
+
+  if (sessionStorage.getItem(KEY) === "1") {
+    unlock();
+  } else {
+    lock();
+  }
+
+  form.addEventListener("submit", (e) => {
+    e.preventDefault();
+    if (input.value.trim().toLowerCase() === PASSWORD) {
+      errorEl.hidden = true;
+      unlock();
+    } else {
+      errorEl.hidden = false;
+      input.select();
+    }
+  });
+})();
+</script>
+
+<div class="convo-gated-content">
+
 <!-- NAV -->
 <nav class="nav">
   <div class="nav__inner">
@@ -755,6 +889,8 @@ footer {
 <div class="disclaimer">
   This document contains forward-looking statements and projections based on current expectations. Projected figures (2025–2026) are illustrative and not guaranteed. All financial metrics marked as TTM refer to the twelve months ending December 2024. This document is confidential and intended solely for the named recipient. Not an offer to sell securities.
 </div>
+
+</div><!-- /.convo-gated-content -->
 
 </body>
 </html>
