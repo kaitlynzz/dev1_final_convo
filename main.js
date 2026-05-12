@@ -49,3 +49,48 @@
     });
   });
 })();
+
+// ============================================================
+// LIGHTBOX — clicking a tile in the UNIQUE grid opens a fullscreen view.
+// Arrow keys, prev/next buttons, and Escape work as expected.
+// ============================================================
+(function () {
+  const tiles = Array.from(document.querySelectorAll(".unique__grid .tile img"));
+  const lightbox = document.getElementById("lightbox");
+  if (!tiles.length || !lightbox) return;
+
+  const img = document.getElementById("lightboxImg");
+  const closeBtn = document.getElementById("lightboxClose");
+  const prevBtn = document.getElementById("lightboxPrev");
+  const nextBtn = document.getElementById("lightboxNext");
+  let index = 0;
+
+  function open(i) {
+    index = (i + tiles.length) % tiles.length;
+    img.src = tiles[index].src;
+    img.alt = tiles[index].alt || "";
+    lightbox.hidden = false;
+    document.body.style.overflow = "hidden";
+  }
+  function close() {
+    lightbox.hidden = true;
+    document.body.style.overflow = "";
+  }
+
+  tiles.forEach((t, i) => {
+    t.style.cursor = "zoom-in";
+    t.addEventListener("click", () => open(i));
+  });
+  closeBtn.addEventListener("click", close);
+  prevBtn.addEventListener("click", () => open(index - 1));
+  nextBtn.addEventListener("click", () => open(index + 1));
+  lightbox.addEventListener("click", (e) => {
+    if (e.target === lightbox) close();
+  });
+  document.addEventListener("keydown", (e) => {
+    if (lightbox.hidden) return;
+    if (e.key === "Escape") close();
+    else if (e.key === "ArrowLeft") open(index - 1);
+    else if (e.key === "ArrowRight") open(index + 1);
+  });
+})();

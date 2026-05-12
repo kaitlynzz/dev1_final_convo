@@ -3,7 +3,9 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <link rel="icon" type="image/png" href="assets/Convo Logo.png" />
+    <link rel="icon" type="image/png" href="favicon.png?v=2" />
+    <link rel="shortcut icon" type="image/png" href="favicon.png?v=2" />
+    <link rel="apple-touch-icon" href="favicon.png?v=2" />
 <title>CONVO — Investor Overview</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=La+Belle+Aurore&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="main.css" />
@@ -375,6 +377,224 @@ h2 {
 .model-title { font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: var(--ink-dark); margin-bottom: 10px; }
 .model-val { font-family: 'Playfair Display', serif; font-size: 36px; color: var(--ink-dark); margin-bottom: 8px; }
 .model-note { font-size: 12px; color: var(--ink-dark); line-height: 1.65; }
+
+/* ── BUSINESS MODEL CANVAS ── */
+.bmc-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  grid-template-rows: auto auto auto;
+  gap: 0;
+  margin-top: 48px;
+  border-top: 1px solid var(--line);
+  border-left: 1px solid var(--line);
+}
+.bmc-cell {
+  padding: 24px 22px;
+  border-right: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+  background: var(--warm);
+}
+.bmc-cell--tall { grid-row: span 2; }
+.bmc-cell--wide { grid-column: span 2; }
+.bmc-cell--accent {
+  background: var(--dark-panel2);
+  border-left: 2px solid var(--gold);
+  margin-left: -1px;
+}
+.bmc-title {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-dark);
+  margin-bottom: 12px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+.bmc-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+.bmc-list li {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.55;
+  padding: 4px 0;
+  padding-left: 14px;
+  position: relative;
+}
+.bmc-list li::before {
+  content: "·";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  font-weight: 700;
+  color: var(--gold);
+}
+.bmc-list--inline {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 4px 16px;
+}
+.bmc-list--inline li { padding-left: 14px; }
+
+/* ── COMPETITIVE ANALYSIS ── */
+.comp-table-wrap {
+  margin-top: 48px;
+  overflow-x: auto;
+  background: #fff;
+  border-radius: 4px;
+}
+.comp-table {
+  width: 100%;
+  min-width: 880px;
+  border-collapse: collapse;
+  font-family: "Inter", sans-serif;
+}
+.comp-table th, .comp-table td {
+  padding: 16px 18px;
+  text-align: left;
+  font-size: 12px;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-dark);
+  vertical-align: middle;
+}
+.comp-table thead th {
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--muted);
+  background: var(--warm);
+  padding-bottom: 14px;
+  padding-top: 14px;
+}
+.comp-feat {
+  font-weight: 500;
+  color: var(--ink-dark);
+  font-size: 11px;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  white-space: nowrap;
+}
+.comp-us, thead .comp-us {
+  background: var(--ink-dark);
+  color: var(--bg) !important;
+  font-weight: 500;
+}
+.comp-callouts {
+  margin-top: 40px;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+.comp-callout {
+  border-top: 2px solid var(--gold);
+  padding-top: 16px;
+}
+.comp-callout__num {
+  font-size: 38px;
+  font-weight: 300;
+  color: var(--ink-dark);
+  letter-spacing: -0.01em;
+  line-height: 1;
+  margin-bottom: 10px;
+}
+.comp-callout__body {
+  font-size: 12px;
+  color: var(--muted);
+  line-height: 1.7;
+}
+
+/* ── PRO FORMA ── */
+.proforma-wrap {
+  margin-top: 48px;
+  overflow-x: auto;
+  background: #fff;
+}
+.proforma-table {
+  width: 100%;
+  min-width: 880px;
+  border-collapse: collapse;
+  font-family: "Inter", sans-serif;
+  font-size: 12px;
+}
+.proforma-table th, .proforma-table td {
+  padding: 12px 16px;
+  text-align: right;
+  border-bottom: 1px solid var(--line);
+  color: var(--ink-dark);
+}
+.proforma-table thead th {
+  font-size: 11px;
+  font-weight: 500;
+  letter-spacing: 0.06em;
+  color: var(--muted);
+  background: var(--warm);
+  white-space: nowrap;
+  padding: 14px 16px;
+}
+.proforma-table thead th:first-child { text-align: left; }
+.proforma-table .ph-feat {
+  text-align: left;
+  font-weight: 400;
+  color: var(--muted);
+  font-size: 12px;
+  white-space: nowrap;
+}
+.proforma-table .ph-section-row td {
+  background: var(--warm);
+  font-size: 10px;
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--ink-dark);
+  text-align: left;
+  padding: 10px 16px;
+}
+.proforma-table .ph-total-row td {
+  font-weight: 500;
+  color: var(--ink-dark);
+  background: rgba(0, 0, 0, 0.02);
+}
+.proforma-table .ph-total-row .ph-feat { color: var(--ink-dark); }
+.proforma-table .ph-bottom-row td {
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--ink-dark);
+  background: var(--dark-panel2);
+}
+.ph-tag {
+  display: inline-block;
+  margin-left: 6px;
+  padding: 2px 6px;
+  border-radius: 4px;
+  background: var(--ink-dark);
+  color: var(--bg);
+  font-size: 9px;
+  letter-spacing: 0.06em;
+  font-weight: 500;
+  vertical-align: middle;
+}
+.ph-tag--proj {
+  background: var(--gold);
+  color: var(--ink-dark);
+}
+.ph-note {
+  margin-top: 16px;
+  font-size: 11px;
+  color: var(--muted);
+  font-style: italic;
+  line-height: 1.7;
+}
+
+@media (max-width: 1100px) {
+  .bmc-grid { grid-template-columns: repeat(2, 1fr); }
+  .bmc-cell--tall { grid-row: auto; }
+  .bmc-cell--wide { grid-column: span 2; }
+  .comp-callouts { grid-template-columns: 1fr; }
+}
 
 /* ── WHY NOW ── */
 .why-grid {
@@ -824,6 +1044,334 @@ footer {
     <div class="model-note">2nd showroom (NYC) · Trade programme launch · 3 additional design consultants · Brand editorial investment. 18-month runway to Series A metrics.</div>
   </div>
 </div>
+
+<!-- BUSINESS MODEL CANVAS -->
+<section class="section" id="canvas">
+  <div class="section-label">Business Model Canvas</div>
+  <h2>How the business works,<br>at a glance.</h2>
+  <p style="font-size:14px; color:var(--muted); line-height:1.8; max-width:580px; margin-top:12px;">A snapshot of the nine building blocks behind CONVO — the partnerships, activities, and revenue streams that make a single-product luxury brand work.</p>
+  <div class="bmc-grid">
+    <div class="bmc-cell bmc-cell--tall">
+      <div class="bmc-title">Key Partners</div>
+      <ul class="bmc-list">
+        <li>Lisbon atelier (frame &amp; upholstery)</li>
+        <li>European hardwood mills (FSC oak)</li>
+        <li>Premium textile houses (40+ fabrics)</li>
+        <li>White-glove freight partner</li>
+        <li>Interior design trade network</li>
+      </ul>
+    </div>
+    <div class="bmc-cell">
+      <div class="bmc-title">Key Activities</div>
+      <ul class="bmc-list">
+        <li>Commission management &amp; consultation</li>
+        <li>Brand storytelling &amp; editorial</li>
+        <li>Atelier QA and delivery oversight</li>
+      </ul>
+    </div>
+    <div class="bmc-cell bmc-cell--tall bmc-cell--accent">
+      <div class="bmc-title">Value Proposition</div>
+      <ul class="bmc-list">
+        <li>One sofa, made to commission</li>
+        <li>Limited to one purchase per owner</li>
+        <li>Bespoke custom builds by inquiry</li>
+        <li>Lifetime frame warranty</li>
+        <li>Designed to be passed down</li>
+      </ul>
+    </div>
+    <div class="bmc-cell">
+      <div class="bmc-title">Customer Relationships</div>
+      <ul class="bmc-list">
+        <li>1:1 designer-led consultation</li>
+        <li>Concierge after-sale service</li>
+        <li>Re-upholstery for life</li>
+      </ul>
+    </div>
+    <div class="bmc-cell bmc-cell--tall">
+      <div class="bmc-title">Customer Segments</div>
+      <ul class="bmc-list">
+        <li>HNW homeowners ($1M+ residences)</li>
+        <li>Architects &amp; interior designers (trade)</li>
+        <li>Boutique hotels &amp; private clubs</li>
+        <li>Collectors of investment-grade design</li>
+      </ul>
+    </div>
+    <div class="bmc-cell">
+      <div class="bmc-title">Key Resources</div>
+      <ul class="bmc-list">
+        <li>Patented modular form (EU/US/UK)</li>
+        <li>Atelier capacity &amp; craftspeople</li>
+        <li>Brand &amp; editorial library</li>
+      </ul>
+    </div>
+    <div class="bmc-cell">
+      <div class="bmc-title">Channels</div>
+      <ul class="bmc-list">
+        <li>Direct-to-consumer (convo.studio)</li>
+        <li>By-appointment showroom (Lisbon)</li>
+        <li>Trade programme &amp; referrals</li>
+      </ul>
+    </div>
+    <div class="bmc-cell bmc-cell--wide">
+      <div class="bmc-title">Cost Structure</div>
+      <ul class="bmc-list bmc-list--inline">
+        <li>Materials &amp; artisan labour (~28%)</li>
+        <li>White-glove logistics (~6%)</li>
+        <li>Marketing &amp; brand (~12%)</li>
+        <li>Fixed OpEx — studio, salaries, software (~$730K / yr)</li>
+      </ul>
+    </div>
+    <div class="bmc-cell bmc-cell--wide bmc-cell--accent">
+      <div class="bmc-title">Revenue Streams</div>
+      <ul class="bmc-list bmc-list--inline">
+        <li>Convo unit sales — $29,999 – $36,999 base</li>
+        <li>Bespoke build commissions (custom quote)</li>
+        <li>Fabric swatch &amp; consultation fees</li>
+        <li>Trade margin programme (forthcoming)</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- COMPETITIVE ANALYSIS -->
+<section class="section chart-section" id="competition">
+  <div class="section-label">Competitive Analysis</div>
+  <h2 style="color:var(--ink-dark);">A category with<br>no real comparables.</h2>
+  <p style="font-size:14px; line-height:1.8; max-width:580px; margin-top:12px; color:#7A7068;">CONVO sits in a deliberate gap between mass-market modular sofas and one-off bespoke makers. Pricing, product, and channel together create a defensible position.</p>
+
+  <div class="comp-table-wrap">
+    <table class="comp-table">
+      <thead>
+        <tr>
+          <th></th>
+          <th class="comp-us">CONVO</th>
+          <th>RH Cloud</th>
+          <th>B&amp;B Italia</th>
+          <th>Roche Bobois</th>
+          <th>West Elm</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td class="comp-feat">Positioning</td>
+          <td class="comp-us">Ultra-luxury, single SKU</td>
+          <td>Mass-premium catalogue</td>
+          <td>Designer modular</td>
+          <td>Bespoke configurator</td>
+          <td>Mass-market</td>
+        </tr>
+        <tr>
+          <td class="comp-feat">Starting price</td>
+          <td class="comp-us">$29,999</td>
+          <td>$14,995</td>
+          <td>$22,800</td>
+          <td>$11,500</td>
+          <td>$3,198</td>
+        </tr>
+        <tr>
+          <td class="comp-feat">Made to order</td>
+          <td class="comp-us">Yes — every unit</td>
+          <td>No — inventoried</td>
+          <td>Partial</td>
+          <td>Yes</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td class="comp-feat">Limited per owner</td>
+          <td class="comp-us">Yes — 1 per buyer</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+          <td>No</td>
+        </tr>
+        <tr>
+          <td class="comp-feat">Distribution</td>
+          <td class="comp-us">DTC + 1 showroom</td>
+          <td>30+ galleries</td>
+          <td>50+ dealers</td>
+          <td>250+ stores</td>
+          <td>120+ stores</td>
+        </tr>
+        <tr>
+          <td class="comp-feat">Gross margin</td>
+          <td class="comp-us">~64%</td>
+          <td>~42%</td>
+          <td>~48%</td>
+          <td>~45%</td>
+          <td>~38%</td>
+        </tr>
+        <tr>
+          <td class="comp-feat">Inventory carried</td>
+          <td class="comp-us">$0</td>
+          <td>Heavy</td>
+          <td>Heavy</td>
+          <td>Moderate</td>
+          <td>Heavy</td>
+        </tr>
+        <tr>
+          <td class="comp-feat">3D / AR experience</td>
+          <td class="comp-us">Yes — model-viewer + AR</td>
+          <td>No</td>
+          <td>No</td>
+          <td>Limited</td>
+          <td>Yes</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="comp-callouts">
+    <div class="comp-callout">
+      <div class="comp-callout__num">2.1×</div>
+      <div class="comp-callout__body">higher unit margin than the closest premium competitor — driven by single-SKU efficiency.</div>
+    </div>
+    <div class="comp-callout">
+      <div class="comp-callout__num">$0</div>
+      <div class="comp-callout__body">in working capital tied up in inventory. Cash-flow positive from the first commission.</div>
+    </div>
+    <div class="comp-callout">
+      <div class="comp-callout__num">0</div>
+      <div class="comp-callout__body">direct competitors offering a single-SKU, limited-per-owner luxury sofa with DTC channel.</div>
+    </div>
+  </div>
+</section>
+
+<!-- FINANCIALS PRO FORMA -->
+<section class="section" id="financials">
+  <div class="section-label">Financials · Pro Forma</div>
+  <h2>Three-year outlook<br>built on signed commissions.</h2>
+  <p style="font-size:14px; color:var(--muted); line-height:1.8; max-width:580px; margin-top:12px;">Actuals through 2024; 2025–2027 projected based on current order book, raise deployment, and conservative atelier capacity (40 units / quarter at full ramp).</p>
+
+  <div class="proforma-wrap">
+    <table class="proforma-table">
+      <thead>
+        <tr>
+          <th>USD</th>
+          <th>2023 <span class="ph-tag">Actual</span></th>
+          <th>2024 <span class="ph-tag">Actual</span></th>
+          <th>2025 <span class="ph-tag ph-tag--proj">Projected</span></th>
+          <th>2026 <span class="ph-tag ph-tag--proj">Projected</span></th>
+          <th>2027 <span class="ph-tag ph-tag--proj">Projected</span></th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr class="ph-section-row"><td colspan="6">Revenue</td></tr>
+        <tr>
+          <td class="ph-feat">Units sold</td>
+          <td>22</td>
+          <td>62</td>
+          <td>118</td>
+          <td>180</td>
+          <td>240</td>
+        </tr>
+        <tr>
+          <td class="ph-feat">Average order value</td>
+          <td>$31,200</td>
+          <td>$33,490</td>
+          <td>$34,800</td>
+          <td>$36,200</td>
+          <td>$37,500</td>
+        </tr>
+        <tr class="ph-total-row">
+          <td class="ph-feat">Net revenue</td>
+          <td>$686K</td>
+          <td>$2.08M</td>
+          <td>$4.11M</td>
+          <td>$6.52M</td>
+          <td>$9.00M</td>
+        </tr>
+
+        <tr class="ph-section-row"><td colspan="6">Costs &amp; Margin</td></tr>
+        <tr>
+          <td class="ph-feat">COGS</td>
+          <td>($268K)</td>
+          <td>($749K)</td>
+          <td>($1.48M)</td>
+          <td>($2.28M)</td>
+          <td>($3.06M)</td>
+        </tr>
+        <tr class="ph-total-row">
+          <td class="ph-feat">Gross profit</td>
+          <td>$418K</td>
+          <td>$1.33M</td>
+          <td>$2.63M</td>
+          <td>$4.24M</td>
+          <td>$5.94M</td>
+        </tr>
+        <tr>
+          <td class="ph-feat">Gross margin</td>
+          <td>61%</td>
+          <td>64%</td>
+          <td>64%</td>
+          <td>65%</td>
+          <td>66%</td>
+        </tr>
+
+        <tr class="ph-section-row"><td colspan="6">Operating expenses</td></tr>
+        <tr>
+          <td class="ph-feat">Marketing &amp; brand</td>
+          <td>($82K)</td>
+          <td>($210K)</td>
+          <td>($430K)</td>
+          <td>($560K)</td>
+          <td>($680K)</td>
+        </tr>
+        <tr>
+          <td class="ph-feat">Salaries &amp; G&amp;A</td>
+          <td>($310K)</td>
+          <td>($520K)</td>
+          <td>($1.05M)</td>
+          <td>($1.42M)</td>
+          <td>($1.75M)</td>
+        </tr>
+        <tr>
+          <td class="ph-feat">Showroom &amp; ops</td>
+          <td>($48K)</td>
+          <td>($120K)</td>
+          <td>($380K)</td>
+          <td>($510K)</td>
+          <td>($620K)</td>
+        </tr>
+        <tr class="ph-total-row">
+          <td class="ph-feat">Total OpEx</td>
+          <td>($440K)</td>
+          <td>($850K)</td>
+          <td>($1.86M)</td>
+          <td>($2.49M)</td>
+          <td>($3.05M)</td>
+        </tr>
+
+        <tr class="ph-section-row"><td colspan="6">Bottom line</td></tr>
+        <tr class="ph-bottom-row">
+          <td class="ph-feat">EBITDA</td>
+          <td>($22K)</td>
+          <td>$480K</td>
+          <td>$770K</td>
+          <td>$1.75M</td>
+          <td>$2.89M</td>
+        </tr>
+        <tr>
+          <td class="ph-feat">EBITDA margin</td>
+          <td>-3%</td>
+          <td>23%</td>
+          <td>19%</td>
+          <td>27%</td>
+          <td>32%</td>
+        </tr>
+        <tr>
+          <td class="ph-feat">Cash burn / (gain)</td>
+          <td>($180K)</td>
+          <td>$310K</td>
+          <td>$610K</td>
+          <td>$1.55M</td>
+          <td>$2.60M</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+  <p class="ph-note">Projections assume deployment of $3.5M Seed raise across NYC showroom (Q3 2025), trade programme (Q1 2026), and three additional design consultants. Revenue dip in 2025 EBITDA margin reflects one-time showroom build-out.</p>
+</section>
 
 <!-- WHY NOW -->
 <section class="section">

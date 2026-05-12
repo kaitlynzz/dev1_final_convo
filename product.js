@@ -250,13 +250,59 @@ if (convoViewer) {
   }
 }
 
-// Favorite toggle
+// ============================================================
+// LOCAL STORAGE — persist user selections across reloads
+// Saves the user's color, fabric, and favorited state so refreshing
+// the product page restores their last configuration.
+// ============================================================
+const LS_KEY = "convoProductPrefs";
+
+function loadPrefs() {
+  try {
+    return JSON.parse(localStorage.getItem(LS_KEY) || "{}");
+  } catch (e) {
+    return {};
+  }
+}
+function savePrefs(patch) {
+  const current = loadPrefs();
+  const next = { ...current, ...patch };
+  localStorage.setItem(LS_KEY, JSON.stringify(next));
+}
+
+// Wrap setColor / setFabric so every change is persisted.
+const _setColor = setColor;
+setColor = function (name) {
+  _setColor(name);
+  savePrefs({ color: name });
+};
+const _setFabric = setFabric;
+setFabric = function (fabric) {
+  _setFabric(fabric);
+  savePrefs({ fabric: fabric });
+};
+
+// Restore on load.
+(function restorePrefs() {
+  const prefs = loadPrefs();
+  if (prefs.color && COLOR_HEX[prefs.color]) setColor(prefs.color);
+  if (prefs.fabric && FABRIC_PBR[prefs.fabric]) setFabric(prefs.fabric);
+})();
+
+// Favorite toggle — persisted to localStorage.
 const fav = document.getElementById("favBtn");
 if (fav) {
+  // Restore favorite state.
+  if (loadPrefs().favorited) {
+    fav.classList.add("is-faved");
+    fav.textContent = "♥";
+  }
   fav.addEventListener("click", (e) => {
     e.preventDefault();
     fav.classList.toggle("is-faved");
-    fav.textContent = fav.classList.contains("is-faved") ? "♥" : "♡";
+    const on = fav.classList.contains("is-faved");
+    fav.textContent = on ? "♥" : "♡";
+    savePrefs({ favorited: on });
   });
 }
 
