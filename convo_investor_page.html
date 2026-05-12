@@ -3,6 +3,7 @@
 <head>
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+    <link rel="icon" type="image/png" href="assets/Convo Logo.png" />
 <title>CONVO — Investor Overview</title>
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700&family=La+Belle+Aurore&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="main.css" />
@@ -500,6 +501,7 @@ footer {
   justify-content: center;
   padding: 24px;
 }
+.gate[hidden] { display: none; }
 .gate__card {
   width: 100%;
   max-width: 440px;
@@ -566,14 +568,12 @@ footer {
 <script>
 (function () {
   const PASSWORD = "convo2026"; // change me — also no real security
-  const KEY = "convoInvestorUnlocked";
   const gate = document.getElementById("convoGate");
   const form = document.getElementById("gateForm");
   const input = document.getElementById("gatePw");
   const errorEl = document.getElementById("gateError");
 
   function unlock() {
-    sessionStorage.setItem(KEY, "1");
     document.documentElement.classList.remove("gate-locked");
     gate.hidden = true;
   }
@@ -583,11 +583,8 @@ footer {
     setTimeout(() => input && input.focus(), 50);
   }
 
-  if (sessionStorage.getItem(KEY) === "1") {
-    unlock();
-  } else {
-    lock();
-  }
+  // Always lock on every page load — no session persistence.
+  lock();
 
   form.addEventListener("submit", (e) => {
     e.preventDefault();
@@ -608,7 +605,7 @@ footer {
 <nav class="nav">
   <div class="nav__inner">
     <a class="nav__logo" href="index.html">
-      <img src="assets/logo.svg" alt="CONVO" />
+      <img src="assets/Convo Logo.png" alt="CONVO" /><span class="nav__logo-text">CONVO</span>
     </a>
     <ul class="nav__links">
       <li><a href="index.html">HOME</a></li>

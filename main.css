@@ -49,9 +49,22 @@ img {
   align-items: center;
   gap: 32px;
 }
+.nav__logo {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  color: var(--ink-dark);
+}
 .nav__logo img {
   height: 30px;
   width: auto;
+}
+.nav__logo-text {
+  font-size: 28px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  line-height: 1;
+  color: var(--ink-dark);
 }
 .nav__links {
   list-style: none;
@@ -1463,17 +1476,29 @@ tbody tr:last-child .matrix__highlight {
 }
 
 .manifesto {
+  position: relative;
   max-width: 900px;
   margin: 80px auto;
-  padding: 0 40px;
+  padding: 60px 80px;
   text-align: center;
 }
 .manifesto__mark {
+  position: absolute;
   font-family: "La Belle Aurore", cursive;
-  font-size: 96px;
-  line-height: 0.5;
+  font-size: 120px;
+  line-height: 1;
   color: var(--muted);
-  margin-bottom: 12px;
+  margin: 0;
+}
+/* Opening mark hugs the top-left corner. */
+.manifesto > .manifesto__mark:first-of-type {
+  top: 0;
+  left: 0;
+}
+/* Closing mark hugs the bottom-right corner. */
+.manifesto__mark--close {
+  bottom: 0;
+  right: 0;
 }
 .manifesto__body {
   font-size: 28px;
@@ -1716,6 +1741,8 @@ tbody tr:last-child .matrix__highlight {
   .about-hero__title { font-size: 72px; }
   .pillars { padding: 40px 24px; }
   .pillars__grid { grid-template-columns: 1fr; gap: 32px; }
+  .manifesto { padding: 40px 56px; }
+  .manifesto__mark { font-size: 88px; }
   .manifesto__body { font-size: 20px; }
   .team, .team--alt { padding: 60px 24px; }
   .team__grid { grid-template-columns: repeat(2, 1fr); gap: 20px; }
